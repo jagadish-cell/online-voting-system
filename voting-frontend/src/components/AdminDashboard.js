@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
+
 const candidates = [
   { id: 1, name: 'Chandrababu Naidu', image: '/images/CBN.PNG', partySymbol: '/images/party3.jpeg' },
   { id: 2, name: 'Jagan Mohan Reddy', image: '/images/jagan.png', partySymbol: '/images/party2.avif' },
@@ -16,11 +18,11 @@ const AdminDashboard = () => {
 
   const fetchVoteCounts = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/get-vote-counts');
+      const response = await fetch(`${API_BASE_URL}/get-vote-counts`);
       const data = await response.json();
       setVoteCounts(data);
     } catch (error) {
-      console.error("Error fetching vote counts:", error);
+      console.error("❌ Error fetching vote counts:", error);
     }
   };
 
@@ -64,5 +66,3 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
-
-

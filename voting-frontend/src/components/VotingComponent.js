@@ -24,7 +24,7 @@ const VotingComponent = () => {
 
       const controller = new AbortController(); // ✅ Prevent memory leaks
       try {
-        const response = await fetch(`${API_BASE_URL}/User`, {
+        const response = await fetch(`${API_BASE_URL}/user`, {
           method: 'GET',
           headers: { 'Authorization': `Bearer ${token}` },
           signal: controller.signal
