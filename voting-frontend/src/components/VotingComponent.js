@@ -24,11 +24,14 @@ const VotingComponent = () => {
 
       const controller = new AbortController(); // ✅ Prevent memory leaks
       try {
-        const response = await fetch(`${API_BASE_URL}/user`, {
-          method: 'GET',
-          headers: { 'Authorization': `Bearer ${token}` },
-          signal: controller.signal
+        const baseURL = API_BASE_URL.replace(/\/+$/, ''); // remove trailing slash if any
+
+        const response = await fetch(`${baseURL}/user`, {
+        method: 'GET',
+        headers: { 'Authorization': `Bearer ${token}` },
+        signal: controller.signal
         });
+
 
         const data = await response.json();
         if (response.ok) {
@@ -67,14 +70,17 @@ const VotingComponent = () => {
         return;
       }
 
-      const response = await fetch(`${API_BASE_URL}/vote`, {
+      const baseURL = API_BASE_URL.replace(/\/+$/, ''); // Remove any trailing slashes
+
+       const response = await fetch(`${baseURL}/vote`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+         },
         body: JSON.stringify({ candidateId: selectedCandidate })
-      });
+        });
+
 
       const data = await response.json();
 
