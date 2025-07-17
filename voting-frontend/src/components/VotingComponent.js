@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
 
 const candidates = [
-  { id: 1, name: 'Chandra Babu Naidu', image: '/images/CBN.PNG', partySymbol: '/images/party3.jpeg' },
+  { id: 1, name: 'Chandra Babu Naidu', image: '/images/CBN.png', partySymbol: '/images/party3.jpeg' },
   { id: 2, name: 'Jagan Mohan Reddy', image: '/images/jagan.png', partySymbol: '/images/party2.avif' },
   { id: 3, name: 'Pawan Kalyan', image: '/images/pawan.png', partySymbol: '/images/party1.jpg' }
 ];
